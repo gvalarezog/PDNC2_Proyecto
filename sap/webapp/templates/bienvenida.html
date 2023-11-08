@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SAP</title>
+</head>
+<body>
+<h1>Bienvenido al Sistema de Administracion de Personas (SAP)</h1>
+<h2>Cantidad de personas: {{cantidad_personas}}</h2>
+<a href="agregar_persona/">Agregar Persona</a>
+<table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+<!--            <th>Sexo</th>-->
+            <th>Curso</th>
+<!--            <th>Nombre Profesor</th>-->
+<!--            <th>Estado</th>-->
+            <th>Ver</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+        </tr>
+        {% for persona in personas %}
+            <tr>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellido}}</td>
+                <td>{{persona.email}}</td>
+<!--                <td>{{persona.get_sexo_display|default_if_none:"-"}}</td>-->
+                <td>{{persona.curso|default_if_none:"-" }}</td>
+<!--                <td>{{persona.curso.profesor}}</td>-->
+<!--                <td>-->
+<!--                    {% if persona.activo %}-->
+<!--                        Activo-->
+<!--                    {% else %}-->
+<!--                        Inactivo-->
+<!--                    {% endif %}-->
+<!--                </td>-->
+                <td><a href="ver_persona/{{persona.id}}">Ver</a> </td>
+                <td><a href="">Modificar</a></td>
+                <td><a href="">Eliminar</a></td>
+            </tr>
+        {% endfor %}
+</table>
+</body>
+</html>
