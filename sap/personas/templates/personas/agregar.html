@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Persona</title>
+
+</head>
+<body>
+
+    <h1>Agregar Persona</h1>
+
+
+        <form method="POST">
+            <table>{{formulario}}</table>
+            <input type="submit" value="Grabar">
+            {% csrf_token %}
+        </form>
+    <a href="{%url 'inicio'%}">Regresar</a>
+
+</body>
+</html>
