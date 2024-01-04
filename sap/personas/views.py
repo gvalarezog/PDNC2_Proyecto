@@ -3,9 +3,11 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from openpyxl.workbook import Workbook
+from rest_framework import viewsets, permissions
 
 from personas.forms import PersonaFormulario
-from personas.models import Persona
+from personas.models import Persona, Curso
+from personas.serializers import PersonaSerializer, CursoSerializer
 
 
 # Create your views here.
@@ -89,38 +91,19 @@ def generar_reporte(request, *args, **kwargs):
     return response
 
 
+class PersonaViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Persona.objects.all().order_by('-apellido')
+    serializer_class = PersonaSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class CursoViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
+    permission_classes = [permissions.IsAuthenticated]
